@@ -1,31 +1,26 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Home from '../pages/Home';
 
-test('renders Home component', () => {
-  render(<Home />);
-  
-  // Assert that the text content is present in the rendered component
-  expect(screen.getByText(/So, you want to travel to/i)).toBeInTheDocument();
-  
-  const spaceElements = screen.queryAllByText(/Space/i);
-  expect(spaceElements.length).toBeGreaterThan(0); // Assert that at least one element with "Space" text exists
-  
-  expect(screen.getByText(/Let's face it;/i)).toBeInTheDocument();
-  expect(screen.getByText(/outer space and not hover/i)).toBeInTheDocument();
-});
+test('renders the home component', () => {
+  render(
+    <Router>
+      <Home />
+    </Router>
+  );
 
-test('button click redirects to /destination', () => {
-  // Mocking the window.location.href property
-  delete window.location;
-  window.location = { href: '' };
+  // Assert that the text elements are rendered
+  const headingElement = screen.getByText(/So, you want to travel to/i);
+  const titleElements = screen.getAllByText(/Space/i);
+  const descriptionElements = screen.getAllByText(/Let's face it;/i);
   
-  render(<Home />);
-  
-  // Simulating button click
-  const exploreButton = screen.getByRole('button', { name: /Explore/i });
-  exploreButton.click();
-  
-  // Assert that the window.location.href is updated
-  expect(window.location.href).toBe('/project-space/destination');
+  expect(headingElement).toBeInTheDocument();
+  expect(titleElements.length).toBeGreaterThan(0);
+  expect(descriptionElements.length).toBeGreaterThan(0);
+
+  // Assert that the explore button is rendered with the correct link
+  const exploreButtonElement = screen.getByRole('link', { name: /Explore/i });
+  expect(exploreButtonElement).toBeInTheDocument();
+  expect(exploreButtonElement).toHaveAttribute('href', '/project-space/destination');
 });

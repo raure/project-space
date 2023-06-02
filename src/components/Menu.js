@@ -38,7 +38,7 @@ class Menu extends Component {
                    
                     <ul className="Menu">
                         <li className="Menu-link" onClick={setActiveLink}>
-                            <NavLink exact="true" to="/project-space/" activeclassname="active">
+                            <NavLink exact to="/project-space/" activeclassname="active">
                                 <span className="Menu-index">00</span> Home
                             </NavLink>
                         </li>
@@ -67,5 +67,4 @@ class Menu extends Component {
 }
 
 export default Menu;
-
 

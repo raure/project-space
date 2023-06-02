@@ -1,4 +1,5 @@
 import React from 'react'; 
+import { Link } from 'react-router-dom';
 import '../css/Home.css';
 
 function Home() {
@@ -13,9 +14,12 @@ function Home() {
         </div>
   
         <div className="Home-explore-cont">
-            <button className="explore-btn" onClick={() => window.location.href = '/project-space/destination'}>
-              Explore
-            </button>
+        <button className="explore-btn">
+            <Link to="/project-space/destination" className="explore-link">
+                Explore
+            </Link>
+        </button>
+          
         </div>
       </div>
     );
