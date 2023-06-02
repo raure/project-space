@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Bellefair&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Bellefair', serif;
+    text-align: center;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    background-color: #0B0D17;
+    color: white;
+    padding: 0 20px;
+}
+
+.Crew{
+    background-image: url("../assets/crew/background-crew-mobile.jpg");
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    z-index: -1;
+    bottom: 0px;
+    left: 0;
+    transform: rotate(0deg);
+    overflow-x: hidden;
+}
+
+.Crew h4{
+    font-family: 'Barlow Condensed';
+    font-weight: 400;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: #D0D6F9;
+    margin-top: 100px;
+    margin-bottom: 90px;
+}
+
+.page-index{
+    font-family: 'Barlow Condensed';
+    font-weight: 400;
+    font-size: 1em;
+    letter-spacing: 2.5px;
+    color: #D0D6F9;
+    margin-right: 10px;
+    margin-bottom: 40px;
+    opacity: 0.5;
+}
+
+.desktop-crew-content, .right, .left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right{
+    height: 20vh;
+    margin-top: 20px;
+}
+
+.left{
+    height: 30vh;
+    margin-top: 100px;
+}
+
+
+.Crew-image img{
+    margin: 0 auto;
+    width: 220px;
+}
+
+.Crew-line{
+    border: 0.5px solid #FFFFFF;
+    opacity: 0.15;
+    margin: -5px 30px 0 30px;
+}
+
+
+.Crew-links{
+    margin-top: 60px;
+}
+
+.Crew-links span{
+    color: #FFFFFF;
+    opacity: 0.3;
+    font-size: 9em;
+    cursor: pointer;
+}
+.Crew-links span:hover{
+    opacity: 0.5;
+}
+.Crew-links span.active{
+    color: white;
+    opacity: 1;
+}
+
+
+
+.Crew-container{
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+}
+
+.Crew-container h3{
+    font-weight: 400;
+    text-transform: uppercase;
+    opacity: 0.5;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.Crew-container h1{
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 10px 0 20px 0;
+    font-size: 30px;
+    line-height: 30px;
+}
+
+.Crew-container p{
+    font-family: 'Barlow' , sans-serif;
+    font-weight: 400;
+    font-size: 0.95em;
+    line-height: 28px;
+    color: #D0D6F9;
+    width: 85%;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+/* --------------- Media Queries --------------- */
+
+@media (min-width: 600px) {
+
+    .Crew{
+        background-image: url("../assets/crew/background-crew-tablet.jpg");
+        background-size: 100% 100vh;
+        z-index: 0;
+    }
+
+    .Crew h4, .page-index{
+        text-align: left;
+        margin-top: -80px;
+        margin-bottom: 25px;
+        margin-left: 30px;
+        font-size: 1.2em;
+    }
+
+    .Crew-line{
+        display: none;
+    }
+
+    .Crew-image{
+        order: 3;
+    }
+
+    .Crew-links{
+        order: 2;
+    }
+
+    .Crew-container{
+        order: 1;
+    }
+
+    .Crew-image{
+        height: 20vh;
+        margin-top: 100px;
+    }
+
+    .Crew-image img{
+        width: fit-content;
+    }
+
+    .Crew-links{
+        margin-top: -130px;
+    }
+
+    .Crew-container h3{
+        font-size: 25px;
+    }
+    
+    .Crew-container h1{
+        font-size: 40px;
+        margin: 20px 0 35px 0;
+    }
+
+    .Crew-container p{
+        width: 70%;
+        font-size: 1.1em;
+    }
+
+    .desktop-crew-content {
+        flex-direction: column-reverse;
+    }
+
+    .right{
+        height: 15vh;
+    }
+    
+    .left{
+        height: 25vh;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .Crew{
+        background-image: url("../assets/crew/background-crew-desktop.jpg");
+    }
+
+    .desktop-crew-content{
+        flex-direction: row-reverse;
+    }
+
+    .right, .left{
+        width: 50vw;
+    }
+
+    .left{
+        margin-left: 80px;
+        align-items: flex-start;
+    }
+
+    .Crew h4, .page-index{
+        margin-top: 60px;
+        margin-bottom: 85px;
+        margin-left: 100px;
+    }
+
+    .Crew-links{
+        margin-left: 75px;
+    }
+
+    .Crew-container{
+        margin-left: 75px;
+    }
+
+    .Crew-container h1, h3, p{
+        text-align: left;
+    }
+
+    .Crew-container p{
+        margin-bottom: 50px;
+        width: auto;
+    }
+
+    .Crew-image img{
+        margin-top: -110px;
+        width: 480px;
+    }
+}

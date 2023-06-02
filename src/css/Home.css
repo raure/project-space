@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Bellefair&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Bellefair', serif;
+    text-align: center;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    background-color: #0B0D17;
+    color: white;
+    padding: 0 20px;
+}
+
+.Home{
+    background-image: url("../assets/home/background-home-mobile.jpg");
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    z-index: -1;
+    bottom: 0px;
+    left: 0;
+    transform: rotate(0deg);
+}
+
+.Home h1{
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 4.5em;
+    letter-spacing: 4.5px;
+    margin: 20px 40px;
+}
+
+.Home h3{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 400;
+    font-size: 0.9em;
+    letter-spacing: 4.5px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin: 0 40px;
+}
+
+.Home p{
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.95em;
+    line-height: 30px;
+    margin: 0 40px;
+}
+
+.Home-text-cont{
+    margin-top: 60px;
+    height: 35vh;
+}
+
+.Home-explore-cont{
+    margin-top: 95px;
+}
+
+.explore-btn{
+    border: none;
+    border-radius: 150px;
+    width: 150px;
+    height: 150px;
+    background-color: '#FFFFFF';
+    color: '#000000';
+    font-size: 20px;
+    font-family: 'Bellefair', serif;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.explore-btn:hover{
+    background-color: gray;
+    color: #FFFFFF;
+    font-size: 22px;
+}
+
+
+
+
+
+
+
+/* --------------- Media Queries --------------- */
+
+@media (min-width: 600px) {
+
+    .Home{
+        background-image: url("../assets/home/background-home-tablet.jpg");
+        background-size: 100% 100vh;
+        z-index: 0;
+    }
+
+    .Home h1{
+        font-size: 7em;
+        margin: 25px 90px;
+    }
+    
+    .Home h3{
+        font-size: 1.35em;
+        margin: 0 90px;
+    }
+    
+    .Home p{
+        font-size: 1.2em;
+        margin: 0 90px;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .Home{
+        background-image: url("../assets/home/background-home-desktop.jpg");
+        flex-direction: row;
+        align-items: flex-end;
+    }
+
+    .Home-text-cont{
+        margin-left: 50px;
+        margin-bottom: 100px;
+        width: 50vw;
+        height: 45vh;
+        
+    }
+
+    .Home-text-cont h3, h1, p{
+        text-align: left; 
+    }
+
+    .Home-explore-cont{
+        margin: 0 0 100px 180px;
+        width: 50vw;
+    }
+
+    .explore-btn{
+        border-radius: 240px;
+        width: 240px;
+        height: 240px;
+        font-size: 30px;
+    }
+    
+    .explore-btn:hover{
+        font-size: 30px;
+    }
+}
+
+
+@media (min-width: 1600px) {
+    .Home-text-cont h3{
+        font-size: 1.8em;
+    }
+
+    .Home-text-cont h1{
+        font-size: 8em;
+    }
+
+    .Home-text-cont p{
+        font-size: 1.3em;
+        line-height: 35px;
+        word-spacing: 3px;
+    }
+
+    .explore-btn{
+        border-radius: 280px;
+        width: 280px;
+        height: 280px;
+        font-size: 35px;
+    }
+    
+    .explore-btn:hover{
+        font-size: 35px;
+    }
+        
+}
