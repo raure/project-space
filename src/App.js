@@ -1,10 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Destination from './pages/Destination';
-import Crew from './pages/Crew';
-import Technology from './pages/Technology';
-import Menu from './components/Menu';
+import { Home, Destination, Crew, Technology } from './pages';
 import './App.css';
 
 const App = () => {
