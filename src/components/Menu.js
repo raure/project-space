@@ -31,29 +31,29 @@ class Menu extends Component {
         return (
             <div className="Menu-container">
                 <nav>
-                    <a href="/">
+                    <a href="/project-space/">
                         <img src={logo} alt="logo.svg" />
                     </a>
                     <span className="Menu-line"></span> 
                    
                     <ul className="Menu">
                         <li className="Menu-link" onClick={setActiveLink}>
-                            <NavLink exact="true" to="/" activeclassname="active">
+                            <NavLink exact="true" to="/project-space/" activeclassname="active">
                                 <span className="Menu-index">00</span> Home
                             </NavLink>
                         </li>
                         <li className="Menu-link" onClick={setActiveLink}>
-                            <NavLink to="/destination" activeclassname="active">
+                            <NavLink to="/project-space/destination" activeclassname="active">
                                 <span className="Menu-index">01</span> Destination
                             </NavLink>
                         </li>
                         <li className="Menu-link" onClick={setActiveLink}>
-                            <NavLink to="/crew" activeclassname="active">
+                            <NavLink to="/project-space/crew" activeclassname="active">
                                 <span className="Menu-index">02</span> Crew
                             </NavLink>
                         </li>
                         <li className="Menu-link" onClick={setActiveLink}>
-                            <NavLink to="/technology" activeclassname="active">
+                            <NavLink to="/project-space/technology" activeclassname="active">
                                 <span className="Menu-index">03</span> Technology
                             </NavLink>
                         </li>

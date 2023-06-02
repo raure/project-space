@@ -13,7 +13,7 @@ function Home() {
         </div>
   
         <div className="Home-explore-cont">
-            <button className="explore-btn" onClick={() => window.location.href = '/destination'}>
+            <button className="explore-btn" onClick={() => window.location.href = '/project-space/destination'}>
               Explore
             </button>
         </div>

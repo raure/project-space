@@ -27,5 +27,5 @@ test('button click redirects to /destination', () => {
   exploreButton.click();
   
   // Assert that the window.location.href is updated
-  expect(window.location.href).toBe('/destination');
+  expect(window.location.href).toBe('/project-space/destination');
 });

@@ -7,10 +7,10 @@ import './App.css';
 const App = () => {
   const renderRoutes = () => (
     <>
-      <Route path="/" element={<Home />} />
-      <Route path="/destination" element={<Destination />} />
-      <Route path="/crew" element={<Crew />} />
-      <Route path="/technology" element={<Technology />} />
+      <Route path="/project-space/" element={<Home />} />
+      <Route path="/project-space/destination" element={<Destination />} />
+      <Route path="/project-space/crew" element={<Crew />} />
+      <Route path="/project-space/technology" element={<Technology />} />
     </>
   );
 
