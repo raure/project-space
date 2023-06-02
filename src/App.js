@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Home, Destination, Crew, Technology } from './pages';
+import Menu from './components/Menu';
 import './App.css';
 
 const App = () => {
