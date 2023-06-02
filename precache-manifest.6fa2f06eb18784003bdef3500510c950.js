@@ -80,10 +80,6 @@ self.__precacheManifest = [
     "url": "/static/media/logo.4b599304.svg"
   },
   {
-    "revision": "0ee1872af1cd06a92b2977e634a0e4c7",
-    "url": "/static/media/background-home-tablet.0ee1872a.jpg"
-  },
-  {
     "revision": "a94f790beb79f232450ec1b68aff956c",
     "url": "/static/media/background-home-mobile.a94f790b.jpg"
   },
@@ -92,16 +88,20 @@ self.__precacheManifest = [
     "url": "/static/media/background-home-desktop.796a83e7.jpg"
   },
   {
+    "revision": "0ee1872af1cd06a92b2977e634a0e4c7",
+    "url": "/static/media/background-home-tablet.0ee1872a.jpg"
+  },
+  {
     "revision": "3a7c33c578c87a8fec83ddb6661cd31a",
     "url": "/static/media/background-destination-mobile.3a7c33c5.jpg"
   },
   {
-    "revision": "9b36d58f063bbc7e03ef46b70dfada36",
-    "url": "/static/media/background-destination-tablet.9b36d58f.jpg"
-  },
-  {
     "revision": "3147d06c9a9c6166804bc0297cb8bbfa",
     "url": "/static/media/background-destination-desktop.3147d06c.jpg"
+  },
+  {
+    "revision": "9b36d58f063bbc7e03ef46b70dfada36",
+    "url": "/static/media/background-destination-tablet.9b36d58f.jpg"
   },
   {
     "revision": "7e8b839646ac89fcb4fb5bd2f683001a",
@@ -112,12 +112,12 @@ self.__precacheManifest = [
     "url": "/static/media/background-crew-desktop.3ea64989.jpg"
   },
   {
-    "revision": "c5469ec594045ad985470d61b696f815",
-    "url": "/static/media/background-technology-tablet.c5469ec5.jpg"
-  },
-  {
     "revision": "cf210dfeab6a0bcd02ee2d251298b68f",
     "url": "/static/media/background-technology-desktop.cf210dfe.jpg"
+  },
+  {
+    "revision": "c5469ec594045ad985470d61b696f815",
+    "url": "/static/media/background-technology-tablet.c5469ec5.jpg"
   },
   {
     "revision": "35f8fd483a30d3ca470c3c454b61325f",
@@ -128,7 +128,7 @@ self.__precacheManifest = [
     "url": "/static/media/icon-close.5ece5c70.svg"
   },
   {
-    "revision": "902492d8cd8ff5825031df47043371bf",
+    "revision": "a3d0d5ff2e68fb2f3076463193acb364",
     "url": "/index.html"
   }
 ];
