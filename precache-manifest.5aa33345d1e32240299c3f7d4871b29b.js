@@ -84,12 +84,12 @@ self.__precacheManifest = [
     "url": "/project-space/static/media/background-home-mobile.a94f790b.jpg"
   },
   {
-    "revision": "0ee1872af1cd06a92b2977e634a0e4c7",
-    "url": "/project-space/static/media/background-home-tablet.0ee1872a.jpg"
-  },
-  {
     "revision": "796a83e74f648c5cfefed789882e1743",
     "url": "/project-space/static/media/background-home-desktop.796a83e7.jpg"
+  },
+  {
+    "revision": "0ee1872af1cd06a92b2977e634a0e4c7",
+    "url": "/project-space/static/media/background-home-tablet.0ee1872a.jpg"
   },
   {
     "revision": "3a7c33c578c87a8fec83ddb6661cd31a",
