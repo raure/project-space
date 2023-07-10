@@ -22,5 +22,5 @@ test('renders the home component', () => {
   // Assert that the explore button is rendered with the correct link
   const exploreButtonElement = screen.getByRole('link', { name: /Explore/i });
   expect(exploreButtonElement).toBeInTheDocument();
-  expect(exploreButtonElement).toHaveAttribute('href', '/project-space/destination');
+  expect(exploreButtonElement).toHaveAttribute('href', '/destination');
 });

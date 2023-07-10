@@ -1,16 +1,24 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Home, Destination, Crew, Technology } from './pages';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { getAppStrings } from './components/Strings';
+import Home from './pages/Home';
+import Destination from './pages/Destination';
+import Crew from './pages/Crew';
+import Technology from './pages/Technology';
+import SpaceSavvy from './pages/SpaceSavvy';
 import Menu from './components/Menu';
 import './App.css';
 
+
 const App = () => {
+  const { homePath, destinationPath, crewPath, techPath, spaceSavvyPath } = getAppStrings();
   const renderRoutes = () => (
     <>
-      <Route path="/project-space/" element={<Home />} />
-      <Route path="/project-space/destination" element={<Destination />} />
-      <Route path="/project-space/crew" element={<Crew />} />
-      <Route path="/project-space/technology" element={<Technology />} />
+      <Route path={homePath} element={<Home />} />
+      <Route path={destinationPath} element={<Destination />} />
+      <Route path={crewPath} element={<Crew />} />
+      <Route path={techPath} element={<Technology />} />
+      <Route path={spaceSavvyPath} element={<SpaceSavvy />} />
     </>
   );
 

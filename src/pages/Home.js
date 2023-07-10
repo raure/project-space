@@ -1,27 +1,59 @@
-import React from 'react'; 
-import { Link } from 'react-router-dom';
-import '../css/Home.css';
+import React from 'react';
+import { getHomeStrings, getAppStrings } from '../components/Strings';
+import GlobalStyle from '../designs/GlobalStyle.js'
+import * as Styles from '../designs/HomeStyle.js';
+
 
 function Home() {
+  const { spaceSavvyPath } = getAppStrings();
+
+    const { 
+      firstHeader, 
+      space, 
+      paragraph, 
+      exploreButton 
+    } = getHomeStrings();
+
+    const { 
+      HomeDiv, 
+      HomeTextDiv, 
+      HomeExploreButtonDiv, 
+      HomeH1, 
+      HomeH5, 
+      HomeP, 
+      HomeExploreButton, 
+      HomeExploreButtonLink 
+    } = Styles; 
+
     return (
-      <div className="Home">
-        <div className="Home-text-cont">
-          <h3>So, you want to travel to</h3>
-          <h1>Space</h1>
-          <p>
-            Let's face it; if you want to go to space, you might as well genuinely go to outer space and not hover kind of on the edge of it. Well sit back, and relax because we'll give you a truly out of this world experience!
-          </p>
-        </div>
+      <HomeDiv>
+
+       {/* ------ Global Style (for all pages) ---------- */}
+        <GlobalStyle />
+
+      {/* ------ Text Div ---------- */}
+        <HomeTextDiv>
+          <HomeH5>{firstHeader}</HomeH5>
+          <HomeH1>{space}</HomeH1>
+          <HomeP>{paragraph}</HomeP>
+        </HomeTextDiv>
   
-        <div className="Home-explore-cont">
-        <button className="explore-btn">
-            <Link to="/project-space/destination" className="explore-link">
-                Explore
-            </Link>
-        </button>
-          
-        </div>
-      </div>
+
+      {/* ------ Button Div ---------- */}
+       <HomeExploreButtonDiv>
+
+          {/* Button */}
+          <HomeExploreButton>
+
+            {/* Button Link */}
+            <HomeExploreButtonLink to={spaceSavvyPath}>
+             {exploreButton}
+            </HomeExploreButtonLink>
+
+          </HomeExploreButton>
+       </HomeExploreButtonDiv>
+        
+      </HomeDiv>   
     );
 }
   

@@ -1,70 +1,123 @@
-import React, { Component } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { NavLink } from "react-router-dom";
+import { getMenuStrings } from './Strings';
 import logo from "../assets/shared/logo.svg";
-import '../css/Menu.css';
+import * as Styles from '../designs/MenuStyle.js';
+import { getAppStrings } from './Strings';
 
+const Menu = () => {
+  const { homePath, 
+          destinationPath, 
+          crewPath, 
+          techPath
+  } = getAppStrings();
 
-class Menu extends Component {
-    render() {
-        const sidebar = () => {
-            const menu = document.querySelector(".Menu");
-            const menuLink = document.querySelectorAll(".Menu-link");
-            const hamburger = document.querySelector(".hamburger-icon");
-      
-            hamburger.classList.toggle("active");
-            menu.classList.toggle("active");
-      
-            menuLink.forEach((link) => {
-                link.addEventListener("click", function(){
-                  hamburger.classList.remove("active")
-                  menu.classList.remove("active");
-                })
-            });
-        }
-          
-        const setActiveLink = element => {
-            const links = document.getElementsByTagName("li"); 
-            Array.from(links).forEach(e => e.classList.remove("active"));
-            element.target.classList.add("active");
-        };
+  const {
+    homeIndex,
+    homeLink,
+    destinationIndex,
+    destinationLink,
+    crewIndex,
+    crewLink,
+    techIndex,
+    techLink,
+  } = getMenuStrings();
 
-        return (
-            <div className="Menu-container">
-                <nav>
-                    <a href="/project-space/">
-                        <img src={logo} alt="logo.svg" />
-                    </a>
-                    <span className="Menu-line"></span> 
-                   
-                    <ul className="Menu">
-                        <li className="Menu-link" onClick={setActiveLink}>
-                            <NavLink exact to="/project-space/" activeclassname="active">
-                                <span className="Menu-index">00</span> Home
-                            </NavLink>
-                        </li>
-                        <li className="Menu-link" onClick={setActiveLink}>
-                            <NavLink to="/project-space/destination" activeclassname="active">
-                                <span className="Menu-index">01</span> Destination
-                            </NavLink>
-                        </li>
-                        <li className="Menu-link" onClick={setActiveLink}>
-                            <NavLink to="/project-space/crew" activeclassname="active">
-                                <span className="Menu-index">02</span> Crew
-                            </NavLink>
-                        </li>
-                        <li className="Menu-link" onClick={setActiveLink}>
-                            <NavLink to="/project-space/technology" activeclassname="active">
-                                <span className="Menu-index">03</span> Technology
-                            </NavLink>
-                        </li>
-                    </ul>
+  const {
+    Nav,
+    Logo,
+    NavLine,
+    Menu,
+    MenuLink,
+    MenuIndex,
+    HamburgerIcon,
+  } = Styles;
 
-                    <span className="hamburger-icon" onClick={sidebar}></span>
-                </nav>
-            </div>
-        );
+  const menuRef = useRef(null);
+  const menuLinkRefs = useRef([]);
+  const hamburgerRef = useRef(null);
+
+  const sidebar = () => {
+    const hamburger = hamburgerRef.current;
+    const menu = menuRef.current;
+
+    hamburger.classList.toggle('active');
+    menu.classList.toggle('active');
+  };
+
+  const setActiveLink = (index) => {
+    menuLinkRefs.current.forEach((linkRef, i) => {
+      if (i === index) {
+        linkRef.classList.add('active');
+      } else {
+        linkRef.classList.remove('active');
+      }
+    });
+  };
+
+  useEffect(() => {
+    const menu = menuRef.current;
+  
+    const handleClick = (event) => {
+      const link = event.target.closest('a');
+      if (!link) return;
+  
+      const index = Array.from(menu.children).indexOf(link.parentElement);
+      setActiveLink(index);
+      sidebar();
+    };
+  
+    if (menu) {
+      menu.addEventListener('click', handleClick);
+  
+      return () => {
+        menu.removeEventListener('click', handleClick);
+      };
     }
-}
+  }, []);
+  
+  
+  
+  
+
+  return (
+    <div>
+      <Nav>
+        <Logo href={homePath}>
+          <img src={logo} alt="logo.svg" />
+        </Logo>
+        <NavLine></NavLine>
+
+        <Menu ref={menuRef}>
+          <MenuLink ref={(ref) => (menuLinkRefs.current[0] = ref)}>
+            <NavLink exact="true" to={homePath} activeclassname="active">
+              <MenuIndex>{homeIndex}</MenuIndex> {homeLink}
+            </NavLink>
+          </MenuLink>
+
+          <MenuLink ref={(ref) => (menuLinkRefs.current[1] = ref)}>
+            <NavLink to={destinationPath} activeclassname="active">
+              <MenuIndex>{destinationIndex}</MenuIndex> {destinationLink}
+            </NavLink>
+          </MenuLink>
+
+          <MenuLink ref={(ref) => (menuLinkRefs.current[2] = ref)}>
+            <NavLink to={crewPath} activeclassname="active">
+              <MenuIndex>{crewIndex}</MenuIndex> {crewLink}
+            </NavLink>
+          </MenuLink>
+          
+          <MenuLink ref={(ref) => (menuLinkRefs.current[3] = ref)}>
+            <NavLink to={techPath} activeclassname="active">
+              <MenuIndex>{techIndex}</MenuIndex> {techLink}
+            </NavLink>
+          </MenuLink>
+        </Menu>
+
+        <HamburgerIcon ref={hamburgerRef} onClick={sidebar}></HamburgerIcon>
+      </Nav>
+    </div>
+  );
+};
 
 export default Menu;
-

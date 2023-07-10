@@ -1,29 +1,41 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import { getTechStrings } from '../components/Strings';
+import contentHandler from '../components/ContentHandler';
+import GlobalStyle from '../designs/GlobalStyle.js'
+import * as Styles from '../designs/TechnologyStyle.js';
 import launchOne from "../assets/technology/image-launch-vehicle-portrait.jpg";
 import launchTwo from "../assets/technology/image-launch-vehicle-landscape.jpg";
 import spaceportOne from "../assets/technology/image-spaceport-portrait.jpg";
 import spaceportTwo from "../assets/technology/image-spaceport-landscape.jpg";
 import capsuleOne from "../assets/technology/image-space-capsule-portrait.jpg";
 import capsuleTwo from "../assets/technology/image-space-capsule-landscape.jpg";
-import '../css/Technology.css';
     
 const data = require("../data.json");
 
 function Technology() {
-    const [content, setContent] = useState(0);
-    const {name, description} = data.technology[content];
-    
-    const contentHandler = (index) => {
-        setContent(index);
-    }
 
-    useEffect(() => {
-        const list = document.querySelectorAll('.Technology-links span');
-        for (let i = 0; i < list.length; i++) {
-            list[i].classList.remove('active');
-        }
-        list[content].classList.add("active");
-    }, [content]);
+    // --------- Process the data --------- //
+    const { content, contentLinkIndex, contentRef } = contentHandler(0);
+
+    // --------- Data to be displayed --------- //
+    const {name, description} = data.technology[content];
+
+    // --------- Strings --------- //
+    const { index, header, one, two, three, paragraphHeader } = getTechStrings();
+    
+    // --------- Design --------- //
+    const {
+        TechDiv,
+        DesktopTechDiv,
+        TechImageDiv,
+        TechLinksDiv,
+        TechInfoDiv,
+        TechH5,
+        TechH4,
+        TechH3,
+        TechP,
+        PageIndex
+    } = Styles;
 
     const imgSrc = () => {
         let imgs = [];
@@ -48,39 +60,53 @@ function Technology() {
     }
 
     return (
-        <div className="Technology" data-testid="technology">
-            <h4 className="Technology-page-title">
-                <span className="page-index">03</span> Space launch 101
-            </h4>
+        <TechDiv data-testid="technology">
 
-            <div className="desktop-tech-content">
+            {/* ------ Global Style (for all pages) ---------- */}
+            <GlobalStyle />
 
-                <div className="Technology-img-container">
+            <TechH5>
+                <PageIndex>{index}</PageIndex> {header}
+            </TechH5>
+
+            {/* ------- Technology Div for Desktop -------  */}
+            <DesktopTechDiv>
+
+                {/* Space Launch 101 Image */}
+                <TechImageDiv>
                     <Image desktop ={imgSrc()[0]} mobile ={imgSrc()[1]} name={name} />
-                </div>
+                </TechImageDiv>
                 
-                <div className="Technology-links">
-                    <span onClick={() => contentHandler(0)}>1</span>
-                    <span onClick={() => contentHandler(1)}>2</span>
-                    <span onClick={() => contentHandler(2)}>3</span>
-                </div>
+                {/* Number Links */}
+                <TechLinksDiv>
+                    <span onClick={() => contentLinkIndex(0)} ref={(ref) => (contentRef.current[0] = ref)} >
+                        {one}
+                    </span>
+                    <span onClick={() => contentLinkIndex(1)} ref={(ref) => (contentRef.current[1] = ref)} >
+                        {two}
+                    </span>
+                    <span onClick={() => contentLinkIndex(2)} ref={(ref) => (contentRef.current[2] = ref)} >
+                        {three}
+                    </span>
+                </TechLinksDiv>
                 
-                <div className="Technology-container">
-                    <h3>The terminology...</h3>
-                    <h1>{name}</h1>
-                    <p>{description}</p>
-                </div>
-            </div>
-        </div>
+                {/* Space Launch 101 Information */}
+                <TechInfoDiv>
+                    <TechH4>{paragraphHeader}</TechH4>
+                    <TechH3>{name}</TechH3>
+                    <TechP>{description}</TechP>
+                </TechInfoDiv>
+            </DesktopTechDiv>
+        </TechDiv>
     );
 }
 
 function Image({desktop, mobile, name}){
     return (
         <picture>
-            <source media="(max-width: 1199px)" srcSet={mobile} className="Technology-img" />
-            <source media="(min-width: 1200px)" srcSet={desktop} className="Technology-img" />
-            <img src={desktop} alt={name} className="Technology-img" />
+            <source media="(max-width: 1199px)" srcSet={mobile}/>
+            <source media="(min-width: 1200px)" srcSet={desktop}/>
+            <img src={desktop} alt={name}/>
         </picture>
     )
 }

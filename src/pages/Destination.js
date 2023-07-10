@@ -1,84 +1,134 @@
-import React, { useState, useEffect } from 'react'
-import moon from "../assets/destination/image-moon.png";
-import mars from "../assets/destination/image-mars.png";
-import europa from "../assets/destination/image-europa.png";
-import titan from "../assets/destination/image-titan.png";
-import '../css/Destination.css';
-    
+import React from 'react';
+import { getDestinationStrings } from '../components/Strings';
+import contentHandler from '../components/ContentHandler';
+import GlobalStyle from '../designs/GlobalStyle.js';
+import * as Styles from '../designs/DestinationStyle.js';
+import moon from '../assets/destination/image-moon.png';
+import mars from '../assets/destination/image-mars.png';
+import europa from '../assets/destination/image-europa.png';
+import titan from '../assets/destination/image-titan.png';
+
 const data = require("../data.json");
 
 function Destination() {
-    const [content, setContent] = useState(0);
-    const {name, description, distance, travel} = data.destinations[content];
-    
-    const contentHandler = (index) => {
-        setContent(index);
+
+  // --------- Process the data --------- //
+  const { content, contentLinkIndex, contentRef } = contentHandler(0);
+
+  // --------- Data to be displayed --------- //
+  const {
+    name,
+    description,
+    distance,
+    travel
+  } = data.destinations[content];
+
+  // --------- Strings --------- //
+  const {
+    index,
+    header,
+    moonLink,
+    marsLink,
+    europaLink,
+    titanLink,
+    avgDistanceLabel,
+    travelTimeLabel
+  } = getDestinationStrings();
+
+  // --------- Design --------- //
+  const {
+    DestinationDiv,
+    RightContentDiv,
+    LeftContentDiv,
+    DestinationImageDiv,
+    DestinationLinksDiv,
+    DestinationPickUpperDiv,
+    DestinationPickLowerDiv,
+    DestinationDistanceDiv,
+    DestinationTimeDiv,
+    DestinationPickH1,
+    DestinationH5,
+    DestinationPickH5,
+    DestinationPickP,
+    DestinationPickSpan,
+    PageIndex,
+    DestinationLine
+  } = Styles;
+
+  const imgSrc = () => {
+    switch (name) {
+      case 'Moon':
+        return moon;
+      case 'Mars':
+        return mars;
+      case 'Europa':
+        return europa;
+      case 'Titan':
+        return titan;
+      default:
+        return moon;
     }
+  };
 
-    useEffect(() => {
-        const list = document.querySelectorAll('.Destination-links span');
-        for (let i = 0; i < list.length; i++) {
-            list[i].classList.remove('active');
-        }
-        list[content].classList.add("active");
-    }, [content]);
+  return (
+    <DestinationDiv data-testid="destination">
 
-    const imgSrc = () => {
-        switch (name) {
-            case 'Moon':
-                return moon
-            case 'Mars':
-                return mars
-            case 'Europa':
-                return europa
-            case 'Titan':
-                return titan
-            default:
-                return moon;
-        }
-    }
+      {/* ------ Global Style (for all pages) ---------- */}
+      <GlobalStyle />
 
-    return (
-        <div className="Destination" data-testid="destination">
-            <div className="desktop-left-content">
-                <h4 className="Destination-page-title">
-                    <span className="page-index">01</span> Pick your destination
-                </h4>
+      {/* ------- Left Content for Desktop -------  */}
+      <LeftContentDiv>
+        <DestinationH5>
+          <PageIndex>{index}</PageIndex> {header}
+        </DestinationH5>
 
-                <div className="Destination-image">
-                    <img src={imgSrc()} alt={name}/>
-                </div>
-            </div>
-            
-            <div className="desktop-right-content">
-                <div className="Destination-links">
-                    <span onClick={() => contentHandler(0)}>Moon</span>
-                    <span onClick={() => contentHandler(1)}>Mars</span>
-                    <span onClick={() => contentHandler(2)}>Europa</span>
-                    <span onClick={() => contentHandler(3)}>Titan</span>
-                </div>
-                
-                <div className="Destination-pick-container">
-                    <div className="upper-content">
-                        <h1>{name}</h1>
-                        <p>{description}</p>
-                        <span className="Destination-line"></span> 
-                    </div>
+        <DestinationImageDiv>
+          <img src={imgSrc()} alt={name} />
+        </DestinationImageDiv>
+      </LeftContentDiv>
 
-                    <div className="lower-content">
-                        <div className="distance">
-                            <h5>Avg. distance</h5>
-                            <span>{distance}</span>
-                        </div>
-                        <div className="time">
-                            <h5>Est. travel time</h5>
-                            <span>{travel}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+      {/* ------- Right Content for Desktop -------  */}
+      <RightContentDiv>
+        <DestinationLinksDiv>
+          <span onClick={() => contentLinkIndex(0)} ref={(ref) => (contentRef.current[0] = ref)}>{moonLink}</span>
+          <span onClick={() => contentLinkIndex(1)} ref={(ref) => (contentRef.current[1] = ref)}>{marsLink}</span>
+          <span onClick={() => contentLinkIndex(2)} ref={(ref) => (contentRef.current[2] = ref)}>{europaLink}</span>
+          <span onClick={() => contentLinkIndex(3)} ref={(ref) => (contentRef.current[3] = ref)}>{titanLink}</span>
+        </DestinationLinksDiv>
+
+        {/* ------- Content ABOVE the line -------  */}
+        <DestinationPickUpperDiv>
+
+          {/* Title and description */}
+          <DestinationPickH1>{name}</DestinationPickH1>
+          <DestinationPickP>{description}</DestinationPickP>
+
+          {/* Divider below description */}
+          <DestinationLine></DestinationLine>
+
+        </DestinationPickUpperDiv>
+
+
+        {/* ------- Content BELOW the line -------  */}
+        <DestinationPickLowerDiv>
+
+          {/* Avg. Distance */}
+          <DestinationDistanceDiv>
+            <DestinationPickH5>{avgDistanceLabel}</DestinationPickH5>
+            <DestinationPickSpan>{distance}</DestinationPickSpan>
+          </DestinationDistanceDiv>
+
+          {/* Est. Travel Time */}
+          <DestinationTimeDiv>
+            <DestinationPickH5>{travelTimeLabel}</DestinationPickH5>
+            <DestinationPickSpan>{travel}</DestinationPickSpan>
+          </DestinationTimeDiv>
+
+        </DestinationPickLowerDiv>
+
+      </RightContentDiv>
+    </DestinationDiv>
+  );
 }
 
 export default Destination;
